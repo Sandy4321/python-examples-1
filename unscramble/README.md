@@ -22,4 +22,4 @@ List of scrambled words (randomly generated after each page load):
 9. trfree
 10. eemdcrbe
 
-My method of tackling the problem within the given time contraints was to make use of the Clipboard.  The python script grabs the scrambled list from the system clipboard (select and copy the text from the browser) then when finished unscrambling it sets the answer in the clipboard so I could simply paste it into the text box. 
+My method of tackling the problem within the given time contraints was to make use of the Clipboard.  The python script grabs the scrambled list from the system clipboard (select and copy the text from the browser) then when finished unscrambling it sets the answer in the clipboard so I could simply paste it into the answer box. 
