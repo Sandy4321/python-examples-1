@@ -6,5 +6,6 @@ The pixels in the above image are numbered 0..99 for the first row, 100..199 for
 
 The text contained in the image is the answer encoded in Morse, where "a test" would be encoded as ".- / - . ... -"
 
-
 You have 15 seconds time to send the solution.
+
+For this challenge I saved the image manually by right-clicking.  I then scanned the image for white pixels using the offset formula provided to find the hidden message which is encoded in morse code.  I then translate the morse code to ascii text and set the value in my clipboard for easy pasting.
