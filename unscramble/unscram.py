@@ -1,45 +1,47 @@
-import win32clipboard, sys, optparse, Image
+import sys
 
-###############
-### Options ###
-###############
+import gtk
 
-#option callback for printing clipboard input
-def clip_callback(option, opt_str, value, parser):
-    clipboard = getClipIn()
-    print clipboard
+def getClipboard():
+    return gtk.Clipboard().wait_for_text()
 
-###############
-### Helpers ###
-###############
-    
-
-    
-######################
-### Core Functions ###
-######################
+def setClipboard(text):
+    cb = gtk.Clipboard()
+    cb.set_text(text)
+    cb.store()
 
 
-                
-############
-### Main ###
-############
   
 def main():
-    parser = optparse.OptionParser()
-    parser.add_option('--clip', help="Print the contents of the clipboard", action="callback", callback=clip_callback)
-    #parser.add_option('--clip', action="callback", callback=clip_callback)
     
     if (len(sys.argv) > 1):
         print 'Options used: ', sys.argv[1]
-        parser.parse_args()
         sys.exit()
-        # Command line args are in sys.argv[1], sys.argv[2] ..
-        # sys.argv[0] is the script name itself and can be ignored
+        
+    testList = []
+    with open("words.txt", "r") as mywords:
+        testList = [x.strip("\r\n") for x in mywords.readlines()]
+        
+    scramIn = getClipboard()
+    scrambled = [x.strip() for x in scramIn.split("\t")]
+    results = []
+    for code in  scrambled:
+        codeLen = len(code)
+        codeSort = sorted(code)
 
-    img = Image.open(filename)
-    im = img.load()
-    
+        for word in testList:
+            if (len(word) == codeLen):
+                if (sorted(word) == codeSort):
+                    results.append(word)
+                    
+    setClipboard( ",".join(results))
+                
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
