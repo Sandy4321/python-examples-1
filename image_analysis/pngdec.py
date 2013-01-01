@@ -1,12 +1,9 @@
-import sys
+"""Analyze the Image"""
+
 from PIL import Image
 import gtk
 
-
-###############
-### Helpers ###
-###############
-    
+#Dictionary used for translating the morse code to english    
 codex = {
     ".-": "A",
     "-...": "B",
@@ -45,28 +42,26 @@ codex = {
     "----.": "9",
     "-----": "0",
 }
-    
-def setcbtext(text):
+
+def setClipboard(text):
+    """
+    Sets the answer in the system clipboard
+    """
     cb = gtk.Clipboard()
     cb.set_text(text)
     cb.store()
     
-######################
-### Core Functions ###
-######################
-
-
-                
-############
-### Main ###
-############
   
 def main():
-
+    """
+    Opens and parses the encoded iamge.
+    """
     file = 'PNG.png'
     im = Image.open(file)
     picture = im.load()
-    y, offset, characters = 0, 0, []
+    #start at row 0 with no offset
+    y, offset = 0, 0
+    #max width is given but height is not so we search until there is nothing to search
     while True:
         try:
             for x in range(100):
@@ -82,9 +77,8 @@ def main():
         
     phrase = "".join(characters)
     translated = [codex[x] for x in phrase.split()]
-    setcbtext("".join(translated))
+    setClipboard("".join(translated))
 
-    
 
 if __name__ == '__main__':
     main()
