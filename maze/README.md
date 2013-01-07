@@ -42,25 +42,25 @@
           user location and other information is represented, should
           be described in comments or a docstring.  
 
-  8.  Grading/Scoring criteria:
+  1.  Grading/Scoring criteria:
 
-      (i)   Does it work?
-      (ii)  Does it follow the rules (a)-(c) above?  
-      (iii) Does the code follow the original plan for documentation 
+      i.   Does it work?
+      ii.  Does it follow the rules (a)-(c) above?  
+      iii. Does the code follow the original plan for documentation 
             on the functions/methods? 
-      (iv)  Originality/Features:  does your Python application go 
+      iv.  Originality/Features:  does your Python application go 
             beyond the bare minimum of buttons and text, say with 
             colors, other widgets and interactive behaviors? 
 
-Create class for all functions of the gui
-Create funtion to go north.
-Create function to go south
-Create function to east
-Create function to go west
-Create function that will only allow user to move in available directions within specified grid
-Create gui that refreshes each location using axis and will also display if sword has been claimed
-Create function to randomize sword,dragon and treasure placement.
-Create Button to exit game on win / lose
-Create function that will automatically determine a loss if user moves into dragon room without a sword. 
+- Create class for all functions of the gui
+- Create funtion to go north.
+- Create function to go south
+- Create function to east
+- Create function to go west
+- Create function that will only allow user to move in available directions within specified grid
+- Create gui that refreshes each location using axis and will also display if sword has been claimed
+- Create function to randomize sword,dragon and treasure placement.
+- Create Button to exit game on win / lose
+- Create function that will automatically determine a loss if user moves into dragon room without a sword. 
 
 
