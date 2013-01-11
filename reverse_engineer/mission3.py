@@ -116,16 +116,18 @@ def DecryptChar(char_guess,count,hstring,total):
     else:
         knownval = knownChar(count)
         if(knownval):
+            knownval = ord(knownval)
             for hchar in hexchars:
-                if((ord(knownChar(count)) + int(hchar,16) - total) == int(codeArr[count])):
+                if((knownval + int(hchar,16) - total) == int(codeArr[count])):
                     intTotal = fillMD5Total(char_guess+knownChar(count), hstring[0:1],total, count+1)
                     strDone = DecryptChar(char_guess+knownChar(count),count+1,hstring+hchar,intTotal)
                     if(strDone):
                         return strDone
         else:
             for hchar in hexchars:
+                hcharint = int(hchar,16)
                 for char in chars:
-                    if((ord(char) + int(hchar,16) - total) == int(codeArr[count])):
+                    if((ord(char) + hcharint - total) == int(codeArr[count])):
                         intTotal = fillMD5Total(char_guess+char, hstring[0:1],total, count+1)
                         strDone = DecryptChar(char_guess+char,count+1,hstring+hchar,intTotal)
                         if(strDone):
