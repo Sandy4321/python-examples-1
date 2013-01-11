@@ -1,3 +1,7 @@
+"""
+Using pypy to run this scrypt I was able to complete the 3rd mission in about 30 seconeds.
+"""
+
 from hashlib import md5
 
 ###############
@@ -73,18 +77,26 @@ def fillMD5Total(str_guess, passhash_guess, previous, times_run):
 
 
 def main():
+    """
+    This function finds every possible combination of Character and password for the first character of the string of serials.
+    when it finds a feaisble combination it passes it off to DecruptChar to see if matches can be found for subsequest characters.
+    """
     for hchar in hexchars:
         for char in chars:
             for c in range(481):
                 if(((ord(char) + int(hchar,16) - c) == int(codeArr[0]))):
                     intTotal = fillMD5Total(char, hchar,c, 1)
-                    if(DecryptChar(char,1, str(hchar),intTotal)):
+                    result = DecryptChar(char,1, str(hchar),intTotal)
+                    if(result):
+                        print result.split("\n")[-2]
                         return True
 
 
 def DecryptChar(char_guess,count,hstring,total):
+    """
+    Recursive function that uses a formula derived from the encryption algorithm to guess and then test subsequest character/hex character password combinations.
+    """
     if(count > 99):
-        print str(char_guess).split("\n")[-2]
         return str(char_guess)
         
     elif(count > 31): 
@@ -122,7 +134,7 @@ def DecryptChar(char_guess,count,hstring,total):
     return False
 
 
-
+#this prevents the code from being run automatically if you decide to import the file from another project
 if __name__ == '__main__':
     main()
 
